@@ -12,7 +12,7 @@ function Moviedetails() {
         `https://api.themoviedb.org/3/movie/${param.id}?api_key=a4e96a382bba7d6d48416998e9a084dc`
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setMoviedetails(res.data);
         
       })

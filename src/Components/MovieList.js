@@ -14,14 +14,14 @@ function MovieList() {
   // const movie = useSelector((state) => state.movie);
   const dispatch = useDispatch();
   const [movielist, setMovielist] = useState([]);
-  const [moviecard, setMovie] = useState(null);
+  const [moviecard, setMovie] = useState();
   useEffect(() => {
     axios
       .get(
         "https://api.themoviedb.org/3/movie/popular?api_key=a4e96a382bba7d6d48416998e9a084dc"
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setMovielist(res.data.results);
       })
       .catch((err) => {
@@ -44,14 +44,15 @@ function MovieList() {
         `https://api.themoviedb.org/3/movie/${movie}?api_key=a4e96a382bba7d6d48416998e9a084dc`
       )
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         setMovie(res.data);
         dispatch(addFevorate(res.data));
-
       });
-      console.log(`moviecard: ${moviecard}`)
-    
-    console.log(movie)
+    // e.target.style.color="yellow"
+
+    // console.log(`moviecard: ${moviecard}`)
+
+    // console.log(movie)
   }
   return (
     <div className="container">
@@ -65,7 +66,6 @@ function MovieList() {
                 <Link
                   style={{ textDecoration: "none" }}
                   to={`/movie-details/${movie.id}`}
-                  
                 >
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -79,8 +79,16 @@ function MovieList() {
                     {movie.original_title}
                   </h5>
                 </div>
-                <button className="btn btn-warning" onClick={() => saveMovie(movie.id)}  > Add to Favorates</button>
-                {/* <i className="fa-solid fa-star text-warning" onClick={() => saveMovie()}></i> */}
+                {/* <button className="btn btn-warning" onClick={() => saveMovie(movie.id)}  > Add to Favorates</button> */}
+                <button className="btn btn-warning"  onClick={() => saveMovie(movie.id)}>
+                  {" "}
+                  <i
+                    className="fa-solid fa-star text-dark text-center"
+                    style={{ fontSize: "2.5em" }}
+                    id="styles"
+                   
+                  ></i>
+                </button>
               </div>
             </div>
           );
