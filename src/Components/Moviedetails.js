@@ -7,6 +7,7 @@ function Moviedetails() {
   const [moviedetails,setMoviedetails]=useState({});
   console.log(`param is ${param.id} `);
   useEffect(() => {
+    
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${param.id}?api_key=a4e96a382bba7d6d48416998e9a084dc`
@@ -23,10 +24,10 @@ function Moviedetails() {
 
   return (
     <>
-      <div className="container">
-        <div className="col-4 p-5" key={moviedetails.original_title}>
+      <div className="container-fluid">
+        <div className=" p-5" key={moviedetails.original_title}>
           {/* <Link style={{textDecoration:"none"}} to ={`/movie-details/${movie.id}`}> */}
-          <div className="card" style={{ width: "25rem" }}>
+          <div className="card">
             <img
               src={`https://image.tmdb.org/t/p/w500/${moviedetails.poster_path}`}
               className="card-img-top"

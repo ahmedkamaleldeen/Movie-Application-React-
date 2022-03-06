@@ -1,14 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import { useState } from "react";
+import { useState } from "react";
 // import axios from 'axios';
 
 function Favorates() {
   const movie1 = useSelector((state) => state.movie);
+  const [remove,setremove]=useState([]);
   console.log("movie", movie1);
   function deleteMovie(id) {
-    movie1.filter((movie) => id === movie.id);
-    // console.log(movie1);
+   const remove= movie1.filter((movie) => id !== movie.id);
+    // console.log(remove);
+    // movie1=remove;
+    // return remove;
+    // setremove(remove);
+    // {remove.map((movie)=>{
+    //   return <>
+    // <div>{}</div>
+    // </>})}
   }
   
   return (

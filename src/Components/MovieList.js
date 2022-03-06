@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addFevorate } from "../Redux/action";
 import { useParams } from "react-router-dom";
+import{getmovielist} from '../actions/movielist'
 // import {useSelector} from 'react-'
 // import userEvent from "@testing-library/user-event";
 
@@ -12,21 +13,25 @@ function MovieList() {
   // const param = useParams();
   // console.log(`param is ${param.id} `);
   // const movie = useSelector((state) => state.movie);
+  const movie1 = useSelector((state) => state.movielist.movielist);
+  // console.log(movie)
   const dispatch = useDispatch();
   const [movielist, setMovielist] = useState([]);
   const [moviecard, setMovie] = useState();
   useEffect(() => {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=a4e96a382bba7d6d48416998e9a084dc"
-      )
-      .then((res) => {
-        // console.log(res.data);
-        setMovielist(res.data.results);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+    // axios
+    //   .get(
+    //     "https://api.themoviedb.org/3/movie/popular?api_key=a4e96a382bba7d6d48416998e9a084dc"
+    //   )
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setMovielist(res.data.results);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    dispatch(getmovielist());
     // axios
     //   .get(
     //     `https://api.themoviedb.org/3/movie/${param.id}?api_key=a4e96a382bba7d6d48416998e9a084dc`
@@ -55,13 +60,13 @@ function MovieList() {
     // console.log(movie)
   }
   return (
-    <div className="container">
+    <div className="container-fluid" style={{backgroundColor:"black"}}>
       {/* <div>{movie}</div> */}
       <div className="row">
-        {movielist.map((movie) => {
+        {movie1.map((movie) => {
           return (
             // </Link>
-            <div className="col-4 p-5" key={movie.original_title}>
+            <div className="col-3 p-5" key={movie.original_title}>
               <div className="card" style={{ width: "25rem" }}>
                 <Link
                   style={{ textDecoration: "none" }}
@@ -80,14 +85,17 @@ function MovieList() {
                   </h5>
                 </div>
                 {/* <button className="btn btn-warning" onClick={() => saveMovie(movie.id)}  > Add to Favorates</button> */}
-                <button className="btn btn-warning"  onClick={() => saveMovie(movie.id)}>
+                <button
+                  className="btn btn-danger"
+                  style={{ fontSize: "2.5em" }}
+                  onClick={() => saveMovie(movie.id)}
+                >
                   {" "}
                   <i
                     className="fa-solid fa-star text-dark text-center"
-                    style={{ fontSize: "2.5em" }}
                     id="styles"
-                   
                   ></i>
+                  {movie.vote_average}
                 </button>
               </div>
             </div>

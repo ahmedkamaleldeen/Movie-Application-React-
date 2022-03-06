@@ -1,0 +1,11 @@
+
+.style{
+    text-decoration: none;
+    color:red
+}
+
+.style:hover{
+    color: blue;
+    
+
+}
