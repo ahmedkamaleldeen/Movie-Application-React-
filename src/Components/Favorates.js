@@ -4,11 +4,19 @@ import { useState } from "react";
 // import axios from 'axios';
 
 function Favorates() {
-  const movie1 = useSelector((state) => state.movie);
-  const [remove,setremove]=useState([]);
-  console.log("movie", movie1);
+  // const movie1 = useSelector((state) => state.movie);
+  const movie=useSelector((state)=>state.movielist.favorates);
+  // const arr=[];
+  // arr.push(movie);
+  // const [moviedetails,setMovie]=useState([]);
+
+  // setMovie({
+  //   moviedetails
+  // });
+  console.log("movie", movie);
+
   function deleteMovie(id) {
-   const remove= movie1.filter((movie) => id !== movie.id);
+  //  const remove= moviedetails.filter((movie) => id !== movie.id);
     // console.log(remove);
     // movie1=remove;
     // return remove;
@@ -23,7 +31,7 @@ function Favorates() {
     <>
       <div className="container">
         <div className="row">
-          {movie1.map((movie) => {
+          {movie.map((movie) => {
             return (
               <div className="col-4 p-5" key={movie.original_title}>
                 <div className="card" style={{ width: "25rem" }}>

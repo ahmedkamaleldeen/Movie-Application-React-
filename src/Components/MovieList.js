@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addFevorate } from "../Redux/action";
 import { useParams } from "react-router-dom";
-import{getmovielist, getmovielistlanguage} from '../actions/movielist'
+import{getmovielist, getmovielistdetails, getmovielistfavo, getmovielistlanguage} from '../actions/movielist'
 import { LanguageContext } from "../context/language";
 // import {useSelector} from 'react-'
 // import userEvent from "@testing-library/user-event";
@@ -15,6 +15,7 @@ function MovieList() {
   // console.log(`param is ${param.id} `);
   // const movie = useSelector((state) => state.movie);
   const movie1 = useSelector((state) => state.movielist.movielist);
+  
   // console.log(movie)
   const dispatch = useDispatch();
   const [movielist, setMovielist] = useState([]);
@@ -44,22 +45,24 @@ function MovieList() {
 
     //   });
   }, []);
-
-  function saveMovie(movie) {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movie}?api_key=a4e96a382bba7d6d48416998e9a084dc`
-      )
-      .then((res) => {
-        console.log(res.data);
-        setMovie(res.data);
-        dispatch(addFevorate(res.data));
-      });
+  // const [moviedetails,setMovie]=useState([]);
+  function saveMovie(id) {
+    // axios
+    //   .get(
+    //     `https://api.themoviedb.org/3/movie/${movie}?api_key=a4e96a382bba7d6d48416998e9a084dc`
+    //   )
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setMovie(res.data);
+    //     dispatch(addFevorate(res.data));
+    //   });
     // e.target.style.color="yellow"
 
     // console.log(`moviecard: ${moviecard}`)
 
     // console.log(movie)
+    dispatch(getmovielistfavo(id));
+    
   }
   return (
     <div className="container-fluid" style={{backgroundColor:"black"}}>

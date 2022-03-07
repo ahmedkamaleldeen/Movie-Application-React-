@@ -1,6 +1,7 @@
 const INITIAL_STATE={
     movielist:[],
     moviedetails:{},
+    favotrates:[],
     language:""
 
 }
@@ -22,6 +23,12 @@ export default function movielist(state=INITIAL_STATE,action){
                 ...state,
                 // language:action.payload,
                 movielist:action.payload
+            }
+            case 'GET_MOVIE_FAVO':
+            return{
+                ...state,
+                // language:action.payload,
+                favotrates:action.payload
             }
 
             default:
