@@ -2,7 +2,7 @@ const INITIAL_STATE={
     movielist:[],
     moviedetails:{},
     favotrates:[],
-    language:""
+    
 
 }
 export default function movielist(state=INITIAL_STATE,action){
@@ -21,14 +21,17 @@ export default function movielist(state=INITIAL_STATE,action){
             case 'GET_MOVIE_LIST_LANG':
             return{
                 ...state,
-                // language:action.payload,
                 movielist:action.payload
             }
             case 'GET_MOVIE_FAVO':
             return{
                 ...state,
-                // language:action.payload,
-                favotrates:action.payload
+                favotrates:[...state.favotrates, action.payload]
+            }
+            case 'REMOVE_FAVO':
+            return{
+                ...state,
+                favotrates:state.favotrates.filter((movie)=>movie.id!==action.payload.id)
             }
 
             default:

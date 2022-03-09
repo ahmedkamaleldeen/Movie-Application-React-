@@ -18,7 +18,7 @@ function MovieList() {
   
   // console.log(movie)
   const dispatch = useDispatch();
-  const [movielist, setMovielist] = useState([]);
+  // const [movielist, setMovielist] = useState([]);
   const [moviecard, setMovie] = useState();
   const {lang} =useContext(LanguageContext);
   useEffect(() => {
@@ -49,18 +49,18 @@ function MovieList() {
   function saveMovie(id) {
     // axios
     //   .get(
-    //     `https://api.themoviedb.org/3/movie/${movie}?api_key=a4e96a382bba7d6d48416998e9a084dc`
+    //     `https://api.themoviedb.org/3/movie/${id}?api_key=a4e96a382bba7d6d48416998e9a084dc`
     //   )
     //   .then((res) => {
     //     console.log(res.data);
     //     setMovie(res.data);
     //     dispatch(addFevorate(res.data));
     //   });
-    // e.target.style.color="yellow"
+    // // e.target.style.color="yellow"
 
     // console.log(`moviecard: ${moviecard}`)
 
-    // console.log(movie)
+    // console.log(id)
     dispatch(getmovielistfavo(id));
     
   }

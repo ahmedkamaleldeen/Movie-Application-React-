@@ -1,19 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromFavo } from "../actions/movielist";
 // import axios from 'axios';
 
 function Favorates() {
   // const movie1 = useSelector((state) => state.movie);
-  const movie=useSelector((state)=>state.movielist.favorates);
-  // const arr=[];
-  // arr.push(movie);
+  // const movieList=useSelector((state)=>state.addfavo.movie);
+  const movieList1=useSelector((state)=>state.movielist.favotrates);
+  const dispatch=useDispatch();
+  
+  // const [movieList,setMovieList]=useState([]);
+  // movieList.push(movie)
+  // setMovieList(...movieList,movieList);
   // const [moviedetails,setMovie]=useState([]);
 
   // setMovie({
   //   moviedetails
   // });
-  console.log("movie", movie);
+  // console.log("movie", movie);
 
   function deleteMovie(id) {
   //  const remove= moviedetails.filter((movie) => id !== movie.id);
@@ -25,13 +29,15 @@ function Favorates() {
     //   return <>
     // <div>{}</div>
     // </>})}
+    dispatch(removeFromFavo(id));
+    
   }
   
   return (
     <>
-      <div className="container">
+      <div className="container-fluid" style={{backgroundColor:"black"}}>
         <div className="row">
-          {movie.map((movie) => {
+          {movieList1.map((movie) => {
             return (
               <div className="col-4 p-5" key={movie.original_title}>
                 <div className="card" style={{ width: "25rem" }}>

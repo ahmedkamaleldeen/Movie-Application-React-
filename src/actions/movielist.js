@@ -1,7 +1,4 @@
 import axios from "axios";
-import { useContext } from "react";
-import { LanguageContext } from "../context/language";
-
 export const getmovielist = () => (dispatch) => {
   // const {lang}=useContext(LanguageContext);
   // const {lang,setlang}=useContext(LanguageContext);
@@ -64,12 +61,30 @@ export const getmovielistfavo = (id) => (dispatch) => {
     .get(
       `https://api.themoviedb.org/3/movie/${id}?api_key=a4e96a382bba7d6d48416998e9a084dc`
     )
-    .then((res) =>
-    
+    .then((res) =>{
+    console.log(res.data);
     dispatch({
       type:"GET_MOVIE_FAVO",
       payload:res.data
-    }))
+    })})
+    .catch((err) => {
+      console.log(err);
+    });
+};
+export const removeFromFavo = (id) => (dispatch) => {
+  // const {lang}=useContext(LanguageContext);
+  // const {lang,setlang}=useContext(LanguageContext);
+
+  return axios
+    .get(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=a4e96a382bba7d6d48416998e9a084dc`
+    )
+    .then((res) =>{
+    console.log(res.data);
+    dispatch({
+      type:"REMOVE_FAVO",
+      payload:res.data
+    })})
     .catch((err) => {
       console.log(err);
     });

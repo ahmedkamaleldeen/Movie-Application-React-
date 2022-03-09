@@ -9,6 +9,7 @@ export default function language(state = INITIAL_STATE, action) {
         ...state,
         movie: [...state.movie, action.payload],
       };
+      
     default:
       return state;
   }
