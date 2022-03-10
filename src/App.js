@@ -8,13 +8,16 @@ import Favorates from "./Components/Favorates";
 import { LanguageContext } from "./context/language";
 import { useState } from "react";
 import { PageNumber } from "./context/PageNumber";
+import { Search, SearchMovie } from "./context/Search";
 function App() {
   const [lang, setlang] = useState("ar");
   const [pageNumber, setpageNumber] = useState("2");
+  const [search,setSearch]=useState("");
   
   return (
     <LanguageContext.Provider value={{ lang, setlang }}>
       <PageNumber.Provider value={{ pageNumber, setpageNumber }}>
+        <SearchMovie.Provider value={{search,setSearch}}>
         <BrowserRouter>
           <Navbar />
           <Switch>
@@ -26,6 +29,7 @@ function App() {
 
           {/* <MovieList /> */}
         </BrowserRouter>
+        </SearchMovie.Provider>
       </PageNumber.Provider>
     </LanguageContext.Provider>
   );

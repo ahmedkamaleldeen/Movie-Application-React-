@@ -28,6 +28,11 @@ export default function movielist(state=INITIAL_STATE,action){
                 ...state,
                 movielist:action.payload
             }
+            case 'GET_MOVIE_LIST_BY_NAME':
+            return{
+                ...state,
+                movielist:action.payload
+            }
             case 'GET_MOVIE_FAVO':
             return{
                 ...state,
