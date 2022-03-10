@@ -89,3 +89,21 @@ export const removeFromFavo = (id) => (dispatch) => {
       console.log(err);
     });
 };
+export const getmovielistByPageNumber = (pageNumber) => (dispatch) => {
+  // const {lang}=useContext(LanguageContext);
+  // const {lang,setlang}=useContext(LanguageContext);
+
+  return axios
+    .get(
+      `https://api.themoviedb.org/3/movie/popular?api_key=a4e96a382bba7d6d48416998e9a084dc&page=${pageNumber}`
+    )
+    .then((res) =>
+    
+    dispatch({
+      type:"GET_MOVIE_LIST_PAGE_NUMBER",
+      payload:res.data.results
+    }))
+    .catch((err) => {
+      console.log(err);
+    });
+};

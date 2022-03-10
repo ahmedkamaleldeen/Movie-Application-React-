@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { getmovielistlanguage } from '../actions/movielist'
 import { LanguageContext } from '../context/language'
 import './style.css'
-function Navbar() {
+function Navbar() {  
 
   const {lang,setlang}=useContext(LanguageContext);
   const dispatch=useDispatch();
