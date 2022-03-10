@@ -11,7 +11,7 @@ import { PageNumber } from "./context/PageNumber";
 import { Search, SearchMovie } from "./context/Search";
 function App() {
   const [lang, setlang] = useState("ar");
-  const [pageNumber, setpageNumber] = useState("2");
+  const [pageNumber, setpageNumber] = useState(1);
   const [search,setSearch]=useState("");
   
   return (
